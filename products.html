@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warewolf - Products</title>
+    <link rel="stylesheet" href="products.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Warewolf</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="premium.html">Premium Subscription</a>
+            <a href="login.html">Login</a>
+            <a href="profile.html">Profile</a>
+        </nav>
+    </header>
+    <section class="products" id="productList">
+        <!-- product daalna hai idhar -->
+    </section>
+    <footer>
+        <p>&copy; 2025 Warewolf. All rights reserved.</p>
+    </footer>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const category = urlParams.get('category') || 'all';
+
+        const allProducts = {
+            clothes: [
+                { name: 'Premium Suit', price: 299.99, img: 'https://thf.bing.com/th/id/OIP.HNz67ZZtqj2LDOoEbgql3AHaHa?w=191&h=191&c=7&r=0&o=7&cb=thfc1falcon3&dpr=1.6&pid=1.7&rm=3' },
+                { name: 'Casual Shirt', price: 49.99, img: 'https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1743657072_4845052.jpg' },
+                { name: 'Designer Jeans', price: 149.99, img: 'https://in.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-lv-x-the-darjeeling-limited-fil-coupe-drawstring-pants--HUP73WS81867_PM2_Front%20view.png?wid=1090&hei=1090' }
+            ],
+            perfumes: [
+                { name: 'Luxury Perfume', price: 89.99, img: 'https://thf.bing.com/th/id/OIP.bNdnVEm0d1BpffuCd2SzRwHaFj?w=237&h=180&c=7&r=0&o=7&cb=thfc1falcon3&dpr=1.6&pid=1.7&rm=3' },
+                { name: 'Eau de Toilette', price: 59.99, img: 'https://thf.bing.com/th/id/OIP.ATNLihzAvvVYMl_E7uCeFQHaHa?w=197&h=197&c=7&r=0&o=7&cb=thfc1falcon3&dpr=1.6&pid=1.7&rm=3' },
+                { name: 'Cologne', price: 79.99, img: 'https://tse2.mm.bing.net/th/id/OIP.px1xtgew_cp6qk42ShRFSgHaHa?r=0&cb=thfc1falcon3&pid=ImgDet&w=187&h=187&c=7&dpr=1.6&o=7&rm=3' }
+            ],
+            cosmetics: [
+                { name: 'Face Cream', price: 39.99, img: 'https://tse2.mm.bing.net/th/id/OIP.sGsAkQdN1BRC1KLLEg3egwHaIy?r=0&cb=thfc1falcon3&rs=1&pid=ImgDetMain&o=7&rm=3' },
+                { name: 'Moisturizer', price: 29.99, img: 'https://thf.bing.com/th/id/OIP.OIxVojewyHpcJugZuv_haQHaHa?w=209&h=209&c=7&r=0&o=7&cb=thfc1falcon3&dpr=1.6&pid=1.7&rm=3' },
+                { name: 'Sunscreen', price: 24.99, img: 'https://thf.bing.com/th/id/OIP.-ov04EQxd9ABnZdWyLpvbwHaFi?w=256&h=192&c=7&r=0&o=7&cb=thfc1falcon3&dpr=1.6&pid=1.7&rm=3' }
+            ],
+            grooming: [
+                { name: 'Beard Oil', price: 29.99, img: 'https://thf.bing.com/th/id/OIP._MgPrF_kfhaKVqJjCiyVtwHaHa?w=198&h=199&c=7&r=0&o=7&cb=thfc1falcon3&dpr=1.6&pid=1.7&rm=3' },
+                { name: 'Shaving Kit', price: 49.99, img: 'https://thf.bing.com/th/id/OIP.5q34X8duTGbwOLIEKaUcfwHaHa?w=185&h=185&c=7&r=0&o=7&cb=thfc1falcon3&dpr=1.6&pid=1.7&rm=3' },
+                { name: 'Hair Gel', price: 19.99, img: 'https://thf.bing.com/th/id/OIP.sxsgIgT6sOna7rl-lSt7zgHaHa?w=212&h=212&c=7&r=0&o=7&cb=thfc1falcon3&dpr=1.6&pid=1.7&rm=3' }
+            ]
+        };
+
+        let products = category === 'all' ? Object.values(allProducts).flat() : allProducts[category] || [];
+
+        const productList = document.getElementById('productList');
+        products.forEach(product => {
+            const productDiv = document.createElement('div');
+            productDiv.className = 'product';
+            productDiv.innerHTML = `
+                <img src="${product.img}" alt="${product.name}">
+                <h4>${product.name}</h4>
+                <p>$${product.price}</p>
+                <button onclick="addToCart('${product.name}', ${product.price})">Add to Cart</button>
+            `;
+            productList.appendChild(productDiv);
+        });
+
+        function addToCart(name, price) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({ name, price });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(name + ' added to cart!');
+        }
+    </script>
+</body>
+</html>

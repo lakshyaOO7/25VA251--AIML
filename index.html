@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warewolf - Premium Men's Brand</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Warewolf</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="premium.html">Premium Subscription</a>
+            <a href="login.html">Login</a>
+            <a href="profile.html">Profile</a>
+        </nav>
+    </header>
+    <section class="hero">
+        <h1>Warewolf</h1>
+        <p>Premium men's fashion, grooming, and lifestyle products.</p>
+    </section>
+    <section class="categories">
+        <div class="container" onclick="window.location.href='ware wolf.html?category=beard'">
+            <img src="//www.themancompany.com/cdn/shop/files/Our526x640_Beard.jpg?v=1667541833" alt="Beard" loading="lazy">
+        </div>
+        <div class="container" onclick="window.location.href='ware wolf.html?category=face'">
+            <img src="Screenshot 2026-06-28 123535.png" alt="Face" loading="lazy">
+        </div>
+        <div class="container" onclick="window.location.href='ware wolf.html?category=shoes'">
+            <img src="https://thf.bing.com/th?q=FootJoy+Icon+Golf+Shoes&w=120&h=120&c=1&rs=1&qlt=70&r=0&o=7&cb=1&dpr=1.6&pid=InlineBlock&rm=3&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247" alt="Shoes" loading="lazy">
+        </div>
+        <div class="container" onclick="window.location.href='ware wolf.html?category=perfumes'">
+            <img src="Screenshot 2026-06-28 125207.png" alt="Perfumes" loading="lazy">
+        </div>
+        <div class="container" onclick="window.location.href='ware wolf.html?category=clothes'">
+            <img src="Screenshot 2026-06-28 123649.png" alt="Clothes" loading="lazy">
+        </div>
+        <div class="container" onclick="window.location.href='ware wolf.html?category=hairs'">
+            <img src="Screenshot 2026-06-28 123555.png" alt="Hairs" loading="lazy">
+        </div>
+        <div class="container" onclick="window.location.href='ware wolf.html?category=beard'">
+            <img src="Screenshot 2026-06-28 123459.png" alt="Beard" loading="lazy">
+        </div>
+    </section>
+    <section class="featured">
+        <h2>Warewolf Specials</h2>
+        <div class="products">
+            <div class="product">
+                <img src="https://thf.bing.com/th/id/OIP.ezSV1TEeoGGczg5Y4cg2XgHaLH?w=189&h=284&c=7&r=0&o=7&cb=thfc1falcon3&dpr=1.6&pid=1.7&rm=3" alt="Premium Suit">
+                <h4>Premium Suit</h4>
+                <p>₹299.99</p>
+                <button onclick="addToCart('Premium Suit', 299.99)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="https://thf.bing.com/th/id/OIP.bNdnVEm0d1BpffuCd2SzRwHaFj?w=237&h=180&c=7&r=0&o=7&cb=thfc1falcon3&dpr=1.6&pid=1.7&rm=3" alt="Luxury Perfume">
+                <h4>Luxury Perfume</h4>
+                <p>₹89.99</p>
+                <button onclick="addToCart('Luxury Perfume', 89.99)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="https://thf.bing.com/th/id/OIP.HNz67ZZtqj2LDOoEbgql3AHaHa?w=191&h=191&c=7&r=0&o=7&cb=thfc1falcon3&dpr=1.6&pid=1.7&rm=3" alt="Beard Oil">
+                <h4>Beard Oil</h4>
+                <p>₹29.99</p>
+                <button onclick="addToCart('Beard Oil', 29.99)">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2025 Warewolf. All rights reserved.</p>
+    </footer>
+    <script>
+        function addToCart(name, price) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({ name, price });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(name + ' added to cart!');
+        }
+    </script>
+</body>
+</html>
